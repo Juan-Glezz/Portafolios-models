@@ -10,7 +10,7 @@ def productos(request):
     return render(request,'tienda/productos.html', {'Productos':Productos})
 
 def post_edit(request, pk):
-    producto = get_object_or_404(producto, pk=pk)
+    producto = get_object_or_404(Producto, pk=pk)
     if request.method == "POST":
         form = PostProducto(request.POST, instance=producto)
         if form.is_valid():

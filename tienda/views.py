@@ -26,7 +26,17 @@ def post_eliminar(request, pk):
     producto=Producto.objects.filter(pk=pk).delete() 
     return redirect('productos')
 
-def post_nuevo(request, pk):
-    producto=Producto.objects.filter(pk=pk).delete() 
-    return redirect('productos')
+
+def post_nuevo(request):
+    if request.method == 'POST':
+        form = PostProducto(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('productos')
+    else:
+        form = PostProducto()
+    
+    return render(request, 'tienda/nuevo.html', {'form': form})
+
+
 

@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto
-from .form import PostProducto,LoginForm
+from .form import PostProducto,LoginForm,RegisterForm
 from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+
 # Create your views here.
 def welcome(request):
     return render(request,'tienda/index.html', {})
@@ -45,7 +47,7 @@ def post_buscar(request):
     Productos = Producto.objects.filter(nombre=busqueda)
     return render(request, 'tienda/mostrarBusqueda.html', {'Productos': Productos , "busqueda": busqueda})
 
-def login_view(request):
+def login(request):
     if request.method == "POST":
         form = LoginForm(request, data=request.POST)
         if form.is_valid():
@@ -54,11 +56,20 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect("dashboard")
+                return redirect("tienda/compra.html")
             else:
                 form.add_error(None, "Nombre de usuario o contraseña no valida")
         return render(request, "tienda/login.html", {"form": form})
     else:
         form = LoginForm()
         return render(request, "tienda/login.html", {"form": form})
-        
+
+def registro(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = RegisterForm()
+    return render(request, 'tienda/registro.html', {'form': form})

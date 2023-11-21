@@ -10,6 +10,11 @@ class PostProducto(forms.ModelForm):
         model = Producto
         fields = ['nombre', 'modelo', 'unidades', 'precio', 'vip', 'marca']
 
+class RegisterForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+
 class LoginForm(AuthenticationForm):
     username = forms.CharField(
         widget=forms.TextInput(

@@ -1,0 +1,16 @@
+{%  extends 'tienda/productos.html' %}
+    {% block content %}
+    <form action="{% url 'buscar' %}" method="get">
+        <input id="inp_search" type="text" placeholder="Buscar post..." name="buscar_post" />
+        <label for="btn_search"><i class="gg-search"></i></label>
+        <button id="btn_search" >Bucar</button>
+    </form>
+        {% for producto in Productos %}
+            Nombre: {{producto.nombre}}
+            Modelos:{{producto.modelo}}
+            Unidades:{{producto.unidades}}
+            Precio:{{producto.precio}}
+            Marca:{{producto.marca}}
+            <br>
+        {% endfor %}
+    {% endblock %}

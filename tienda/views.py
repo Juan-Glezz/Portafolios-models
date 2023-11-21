@@ -5,10 +5,12 @@ from .form import PostProducto
 # Create your views here.
 def welcome(request):
     return render(request,'tienda/index.html', {})
-
 def productos(request):
     Productos= Producto.objects.filter();
     return render(request,'tienda/productos.html', {'Productos':Productos})
+def compra(request):
+    Productos= Producto.objects.filter();
+    return render(request,'tienda/compra.html', {'Productos':Productos})
 
 def post_edit(request, pk):
     producto = get_object_or_404(Producto, pk=pk)
@@ -38,5 +40,9 @@ def post_nuevo(request):
     
     return render(request, 'tienda/nuevo.html', {'form': form})
 
+def post_buscar(request):
+    busqueda = request.GET.get("buscar_post")
+    Productos = Producto.objects.filter(nombre=busqueda)
+    return render(request, 'tienda/mostrarBusqueda.html', {'Productos': Productos , "busqueda": busqueda})
 
 

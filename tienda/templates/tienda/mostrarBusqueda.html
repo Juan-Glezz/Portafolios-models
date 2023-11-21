@@ -1,0 +1,16 @@
+{% extends 'tienda/base.html' %}
+{% block content %}
+   <h2>Resultado posts</h2>
+   {% if Productos %}
+   {% for producto in Productos %}
+   Nombre: {{producto.nombre}}
+   Modelos:{{producto.modelo}}
+   Unidades:{{producto.unidades}}
+   Precio:{{producto.precio}}
+   Marca:{{producto.marca}}
+       <br>
+{% endfor %}
+    {% else %}
+        <h1>No se ha encontró resultados</h1>
+    {% endif %}
+{% endblock %}

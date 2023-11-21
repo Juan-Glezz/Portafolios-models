@@ -48,21 +48,17 @@ def post_buscar(request):
     return render(request, 'tienda/mostrarBusqueda.html', {'Productos': Productos , "busqueda": busqueda})
 
 def login(request):
-    if request.method == "POST":
-        form = LoginForm(request, data=request.POST)
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get("Nombre de Usuario")
-            password = form.cleaned_data.get("Contraseña")
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect("tienda/compra.html")
-            else:
-                form.add_error(None, "Nombre de usuario o contraseña no valida")
-        return render(request, "tienda/login.html", {"form": form})
+            return render(request, "tienda/login.html", {"User":user, "password":password})
+
     else:
         form = LoginForm()
-        return render(request, "tienda/login.html", {"form": form})
+    return render(request, "tienda/login.html", {"form": form})
 
 def registro(request):
     if request.method == 'POST':

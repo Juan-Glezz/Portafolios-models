@@ -1,14 +1,30 @@
 *{
 	margin: 10px;
 }
-
+.titulo{
+		font-family: MS Sans Serif;
+		font-size: 40px;
+		font-weight: bold;
+		text-decoration: none;
+		font-style: italic;
+		font-variant: normal;
+		text-transform: none;
+}
+.page-header{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto;
+	grid-gap: 700px;
+	border-width: 5px;
+border-style: ridge;
+border-color: #000000;
+background-color: rgb(90, 88, 88);
+}
 .secciones{
 	display: grid;
 	grid-template-columns: 1fr 1fr ;
 	grid-template-rows: auto;
 	grid-gap: 10px;
-	
-
 }
 .producto{
 	border: 6px outset #000000;
@@ -36,6 +52,7 @@
 .registro:hover {
 	background:linear-gradient(to bottom, #ffffff 5%, #ffffff 100%);
 	background-color:#ffffff;
+	color: grey;
 }
 .registro:active {
 	position:relative;

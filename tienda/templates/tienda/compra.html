@@ -1,7 +1,5 @@
 {%  extends 'tienda/productos.html' %}
     {% block content %}
-    <a class="registro" href="{% url 'login'  %}" >Login</a>
-    <a class="registro" href="{% url 'registro'  %}" >Registrarse</a>
     <form action="{% url 'buscar' %}" method="get">
         <input id="inp_search" type="text" placeholder="Buscar post..." name="buscar_post" />
         <label for="btn_search"><i class="gg-search"></i></label>

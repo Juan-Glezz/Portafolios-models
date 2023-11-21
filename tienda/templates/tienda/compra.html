@@ -1,16 +1,23 @@
 {%  extends 'tienda/productos.html' %}
     {% block content %}
+    <a class="registro" href="{% url 'login'  %}" >Login</a>
     <form action="{% url 'buscar' %}" method="get">
         <input id="inp_search" type="text" placeholder="Buscar post..." name="buscar_post" />
         <label for="btn_search"><i class="gg-search"></i></label>
         <button id="btn_search" >Bucar</button>
     </form>
         {% for producto in Productos %}
-            Nombre: {{producto.nombre}}
-            Modelos:{{producto.modelo}}
+        <div class="secciones">
+            <div class="producto">
+           <h2>{{producto.nombre}}</h2>
+            <br>
+            Modelos:{{producto.modelo}} /
             Unidades:{{producto.unidades}}
-            Precio:{{producto.precio}}
+            <br>
+            Precio:{{producto.precio}} /
             Marca:{{producto.marca}}
             <br>
+            </div>
+        </div>
         {% endfor %}
     {% endblock %}

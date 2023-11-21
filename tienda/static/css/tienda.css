@@ -2,7 +2,45 @@
 	margin: 10px;
 }
 
+.secciones{
+	display: grid;
+	grid-template-columns: 1fr 1fr ;
+	grid-template-rows: auto;
+	grid-gap: 10px;
+	
 
+}
+.producto{
+	border: 6px outset #000000;
+	border-radius: 25px 25px 11px 11px;
+	text-align: center;
+	background: linear-gradient(to bottom, #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%);
+}
+.registro {
+	box-shadow: 3px 4px 0px 0px #000000;
+	background:linear-gradient(to bottom, #ffffff 5%, #ffffff 100%);
+	background-color:#ffffff;
+	border-radius:5px;
+	border:1px solid #080808;
+	display:inline-block;
+	cursor:pointer;
+	color:#030303;
+	font-family:Arial;
+	font-size:17px;
+	font-weight:bold;
+	font-style:italic;
+	padding:10px 37px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #000000;
+}
+.registro:hover {
+	background:linear-gradient(to bottom, #ffffff 5%, #ffffff 100%);
+	background-color:#ffffff;
+}
+.registro:active {
+	position:relative;
+	top:1px;
+}
 .myButton {
 	box-shadow:inset 0px 1px 3px 0px #1808ff;
 	background:linear-gradient(to bottom, #0f6fff 5%, #1c1f1f 100%);

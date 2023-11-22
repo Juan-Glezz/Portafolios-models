@@ -9,6 +9,6 @@ urlpatterns = [
     path('tienda/admin/eliminar/<int:pk>', views.post_eliminar, name='eliminar'),
     path('tienda/admin/nuevo/', views.post_nuevo, name='nuevo'),
     path('tienda/mostrarBusqueda/', views.post_buscar, name='buscar'),
-    path('tienda/login/', views.login, name='login'),
-    path('tienda/registro/', views.registro, name="registro"),
+    path('tienda/login/', views.log_in, name='login'),
+    # path('tienda/registro/', views.registro, name="registro"),
 ]

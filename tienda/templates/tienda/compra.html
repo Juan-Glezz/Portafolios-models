@@ -1,20 +1,20 @@
-{%  extends 'tienda/productos.html' %}
+{%  extends 'tienda/producto.html' %}
     {% block content %}
     <form action="{% url 'buscar' %}" method="get">
-        <input id="inp_search" type="text" placeholder="Buscar post..." name="buscar_post" />
+        <input id="inp_search" type="text" placeholder="Buscar..." name="buscar_post" />
         <label for="btn_search"><i class="gg-search"></i></label>
-        <button id="btn_search" >Bucar</button>
+        <button class="button" id="btn_search" >🔎</button>
     </form>
         {% for producto in Productos %}
         <div class="secciones">
             <div class="producto">
            <h2>{{producto.nombre}}</h2>
             <br>
-            Modelos:{{producto.modelo}} /
-            Unidades:{{producto.unidades}}
+            Modelos: {{producto.modelo}} /
+            Unidades: {{producto.unidades}}
             <br>
-            Precio:{{producto.precio}} /
-            Marca:{{producto.marca}}
+            Precio: {{producto.precio}} /
+            Marca: {{producto.marca}}
             <br>
             </div>
         </div>

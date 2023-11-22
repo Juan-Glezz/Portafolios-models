@@ -2,13 +2,12 @@
 	margin: 10px;
 }
 .titulo{
-		font-family: MS Sans Serif;
-		font-size: 40px;
-		font-weight: bold;
-		text-decoration: none;
-		font-style: italic;
-		font-variant: normal;
-		text-transform: none;
+		color: #333333;
+		text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);
+		color: #333333;
+		font-size: 50px;
+	text-decoration: none;
+	color: #030303;
 }
 .page-header{
 	display: grid;
@@ -18,7 +17,8 @@
 	border-width: 5px;
 border-style: ridge;
 border-color: #000000;
-background-color: rgb(90, 88, 88);
+background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(49,95,231,1) 58%, rgba(75,209,236,1) 96%);
 }
 .secciones{
 	display: grid;
@@ -26,11 +26,16 @@ background-color: rgb(90, 88, 88);
 	grid-template-rows: auto;
 	grid-gap: 10px;
 }
+.button{
+	border-radius: 20px;
+}
 .producto{
 	border: 6px outset #000000;
 	border-radius: 25px 25px 11px 11px;
 	text-align: center;
-	background: linear-gradient(to bottom, #f2f6f8 0%,#d8e1e7 50%,#b5c6d0 51%,#e0eff9 100%);
+	background: rgb(0,0,0);
+	color: #FFFFFF;
+	background: linear-gradient(32deg, rgba(0,0,0,1) 0%, rgba(130,130,130,1) 78%, rgba(74,76,77,1) 83%);
 }
 .registro {
 	box-shadow: 3px 4px 0px 0px #000000;
@@ -48,6 +53,7 @@ background-color: rgb(90, 88, 88);
 	padding:10px 37px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #000000;
+	margin-left: 250px;
 }
 .registro:hover {
 	background:linear-gradient(to bottom, #ffffff 5%, #ffffff 100%);

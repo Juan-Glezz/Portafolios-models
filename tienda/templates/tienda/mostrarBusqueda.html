@@ -3,11 +3,18 @@
    <h2>Resultado posts</h2>
    {% if Productos %}
    {% for producto in Productos %}
-   Nombre: {{producto.nombre}}
-   Modelos:{{producto.modelo}}
-   Unidades:{{producto.unidades}}
-   Precio:{{producto.precio}}
-   Marca:{{producto.marca}}
+        <div class="secciones">
+            <div class="producto">
+           <h2>{{producto.nombre}}</h2>
+            <br>
+            Modelos: {{producto.modelo}} /
+            Unidades: {{producto.unidades}}
+            <br>
+            Precio: {{producto.precio}} /
+            Marca: {{producto.marca}}
+            <br>
+            </div>
+        </div>
        <br>
 {% endfor %}
     {% else %}

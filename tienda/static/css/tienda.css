@@ -34,7 +34,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(49,95,231,1) 58%, rgb
 	border-radius: 25px 25px 11px 11px;
 	text-align: center;
 	background: rgb(0,0,0);
-	color: #FFFFFF;
+	color: white;
 	background: linear-gradient(32deg, rgba(0,0,0,1) 0%, rgba(130,130,130,1) 78%, rgba(74,76,77,1) 83%);
 }
 .registro {

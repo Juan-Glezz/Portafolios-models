@@ -1,8 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto,Cliente
-from .form import PostProducto,LoginForm
+from .form import PostProducto,LoginForm,CheckoutForm
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def welcome(request):
@@ -10,8 +9,6 @@ def welcome(request):
 def productos(request):
     Productos= Producto.objects.filter();
     return render(request, 'tienda/producto.html', {'Productos': Productos})
-
-@login_required
 def compra(request):
     Productos= Producto.objects.filter();
     return render(request,'tienda/compra.html', {'Productos':Productos})
@@ -31,7 +28,6 @@ def post_edit(request, pk):
 def post_eliminar(request, pk):
     producto=Producto.objects.filter(pk=pk).delete() 
     return redirect('productos')
-
 
 def post_nuevo(request):
     if request.method == 'POST':
@@ -68,6 +64,21 @@ def log_in(request):
     else:
         form = LoginForm()
     return render(request, "tienda/login.html", {"form": form})
+
+
+def checkout(request):
+    if request.method == 'POST':
+        form = CheckoutForm(request.POST)
+        if form.is_valid():
+            # Aquí puedes agregar la lógica para manejar la compra
+            # Por ejemplo, actualizar el inventario del producto, agregar la compra al historial del usuario, etc.
+            pass
+    else:
+        form = CheckoutForm()
+    return render(request, 'tienda/checkout.html', {'form': form})
+
+
+
 
 # def registro(request):
 #     if request.method == 'POST':

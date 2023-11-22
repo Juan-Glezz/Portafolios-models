@@ -4,8 +4,6 @@
         {% for producto in Productos %}
         <div class="secciones">
           <div class="producto">
-            <table>
-              <td>
               <h2> {{producto.nombre}}</h2>
           Modelos:{{producto.modelo}} /
           Unidades:{{producto.unidades}}
@@ -16,8 +14,6 @@
           <br>
             <a class="myButton2" href="{% url 'eliminar' pk=producto.pk %}" >Eliminar Producto</a>
             <a class="myButton" href="{% url 'editar' pk=producto.pk %}" >Editar Producto</a>
-          </td>
-        </table>
           </div>
         </div>
         {% endfor %}

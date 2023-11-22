@@ -16,7 +16,9 @@
             Precio: {{producto.precio}} /
             Marca: {{producto.marca}}
             <br>
+            <a class="myButton3" href="{% url 'checkout' %}" >Comprar</a>
             </div>
         </div>
         {% endfor %}
+        
     {% endblock %}

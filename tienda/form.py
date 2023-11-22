@@ -32,3 +32,6 @@ class LoginForm(AuthenticationForm):
             }
         )
     )
+class CheckoutForm(forms.Form):
+    quantity = forms.IntegerField(min_value=1)
+    product = forms.ModelChoiceField(queryset=Producto.objects.all())

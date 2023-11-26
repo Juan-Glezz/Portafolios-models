@@ -13,9 +13,17 @@
             Precio: {{producto.precio}} /
             Marca: {{producto.marca}}
             <br>
-            </div>
-        </div>
+         
        <br>
+       <form method="POST">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <br>
+    <a class="myButton3" href="{% url 'checkout' pk=producto.pk %}" >Comprar</a>
+    </div>
+    </form>
+</div>
+</div>
 {% endfor %}
     {% else %}
         <h1>No se ha encontró resultados</h1>

@@ -1,0 +1,13 @@
+{% extends 'tienda/base.html' %}
+{% block content %}
+    <h2>Tus Compras</h2>
+        {% for compra in compras %}
+
+         {{ compra.producto.nombre }}
+          <br>
+          Fecha: {{ compra.fecha }} <br>
+          Unidades: {{ compra.unidades }} <br>
+          Importe total: {{ compra.importe }} <br>
+        
+         {% endfor %}
+{% endblock %}

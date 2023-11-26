@@ -1,9 +1,14 @@
 {% extends 'tienda/base.html' %}
 {% block content %}
     <h2>Checkout</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
+    {% for producto in Productos %}
+              <h2> {{producto.nombre}}</h2>
+          Modelos:{{producto.modelo}} /
+          Unidades:{{producto.unidades}}
+          <br>
+          Precio:{{producto.precio}} /
+          Marca:{{producto.marca}}
         <button type="submit">Confirmar Compra</button>
-    </form>
+    </div>
+    {% endfor %}
 {% endblock %}

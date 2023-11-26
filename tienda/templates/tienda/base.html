@@ -9,12 +9,39 @@
     <link rel="stylesheet" href="{% static 'css/tienda.css' %}">
 </head>
 <body>
-<div class="page-header">
+	<header>
+		<div class="page-header">
 		<h1 class="titulo" style="color: black;"><a href="/">Tienda Virtual</a></h1>
 		<div class="usuario">
-			<a class="registro" href="{% url 'login'  %}" >Login</a>
+			{% if user.is_authenticated %}
+				<p>{{ user.username }}, Has iniciado sesion</p>
+				<a class="registro" href="{% url 'logout' %}">Cerrar Sesion</a>
+			{% else %}
+				<p>Hola, usuario, porfavor inicie sesion </p>
+				<a class="registro" href="{% url 'login' %}">Iniciar sesion</a>
+			
+			{% endif %}
 		</div>
     	</div>
+		<ul>
+			{% if user.is_staff %}
+				<li >
+					<a href="{% url 'productos' %}">Administracion</a>
+				</li>
+				<li >
+					<a href="#" role="button" aria-expanded="false">Informes</a>
+					<ul>
+						<li><a href="{% url 'top_clientes' %}">Top Clientes</a></li>
+						<li><a href="{% url 'top_productos' %}">Top Productos</a></li>
+					</ul>
+				</li>
+			{% elif user.is_authenticated %}
+			<li >
+				<a  href="{% url 'historial' %}">Tus Compras</a>
+			</li>
+			{% endif %}
+		</ul>
+	</header>
     	<div class="container-fluid">
         	<div class="row">
             		<div class="col">
@@ -23,5 +50,8 @@
             		</div>
         	</div>
     	</div>
+			
+
+
 </body>
 </html>

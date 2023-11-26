@@ -1,0 +1,10 @@
+{% extends 'tienda/base.html' %}
+{% block content %}
+    <h2>Lo mas vendido</h2>
+        {% for producto in top_productos %}
+
+         {{ producto.nombre }}
+          Se ha comprado {{ producto.dinero_gastado }} veces
+        
+         {% endfor %}
+{% endblock %}

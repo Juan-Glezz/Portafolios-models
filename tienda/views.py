@@ -148,19 +148,20 @@ def checkout(request, pk):
     if request.method == "POST":
         form = CompraForm(request.POST)
         if form.is_valid():
-            compras = form.save(commit=False)
-            compras.cliente = cliente
-            compras.producto = producto
-            compras.fecha = timezone.now()
-            compras.iva = producto.precio * 0.21
-            compras.unidades = form.cleaned_data['unidades']
-            compras.importe = compras.unidades * producto.precio
-            producto.unidades = producto.unidades - compras.unidades
-            cliente.saldo = cliente.saldo - compras.importe
-            cliente.save()
-            producto.save()
-            compras.save()
-            return redirect('welcome')
+            unidades = form.cleaned_data['unidades']
+            if unidades <= producto.unidades:
+                producto.unidades-= unidades
+                producto.save()
+                compra = Compra()
+                compra.producto= producto
+                compra.user= cliente
+                compra.unidades=unidades
+                compra.importe= unidades*producto.precio
+                compra.fecha= timezone.now()
+                compra.save()
+                cliente.saldo -=compra.importe
+                cliente.save()
+                return redirect('welcome')
     form = CompraForm()
     return render(request, 'tienda/checkout.html', {'form': form, 'producto': producto})
 
@@ -173,8 +174,8 @@ def checkout(request, pk):
 @login_required(login_url='/tienda/login/')
 @staff_member_required
 def topProductos(request):
-    productos = Producto.objects.annotate(gastado=Count('compras')).order_by('-gastado')[:10]
-    return render(request, 'tienda/top10Compras.html', {'topProductos': productos})
+    topP = Producto.objects.annotate(sum_unidades=Sum('compra__unidades'), sum_importes=Sum('compra__importe')).order_by('-sum_unidades')[:10]
+    return render(request, 'tienda/top10Compras.html', {'topP': topP})
 
 #La función, realiza una consulta a la base de datos para obtener los 10 mejores clientes. 
 # Utilizando Cliente.objects.annotate(gastado=Sum('compra__importe')), se agrega una anotación 
@@ -193,6 +194,10 @@ def topClientes(request):
 # Esto permitirá que la plantilla acceda a los datos de las compras y los muestre correctamente.
 @login_required(login_url='/tienda/login/')
 def historial(request):
-    compras = Compra.objects.filter(user=request.user).order_by('-fecha')
+    cliente=get_object_or_404(Cliente, user=request.user)
+    compras = Compra.objects.all().filter(producto__compra__user_id=cliente).order_by('-fecha')
     return render(request, 'tienda/historialCompras.html', {'compras': compras})
+
+
+
 

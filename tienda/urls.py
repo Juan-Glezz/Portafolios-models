@@ -11,6 +11,7 @@ urlpatterns = [
     path('tienda/mostrarBusqueda/', views.post_buscar, name='buscar'),
     path('tienda/login/', views.log_in, name='login'),
     path('tienda/checkout/<int:pk>/', views.checkout, name='checkout'),
+    path('tienda/finalizacionC/', views.final, name='final'),
     path('tienda/logout/', views.log_out, name='logout'),
     path('tienda/informes/top10Compras/', views.topProductos, name='top_productos'),
     path('tienda/informes/top10mejores/', views.topClientes, name='top_clientes'),

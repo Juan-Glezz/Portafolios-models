@@ -8,7 +8,11 @@
           <br>
           Precio:{{producto.precio}} /
           Marca:{{producto.marca}}
-        <button type="submit">Confirmar Compra</button>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <br>
+        <a class="myButton3" href="{% url 'final'  %}" >Confirmar Compra</a>
     </div>
     {% endfor %}
 {% endblock %}
